@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lunch & Learn 2026–2027 — TCEA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0A3476;
+    --navy-dark: #071f4a;
+    --navy-mid: #12428f;
+    --gold: #FCB040;
+    --gold-light: #fdd17a;
+    --gold-pale: #FEF0D0;
+    --pale-navy: #D0D8F0;
+    --white: #ffffff;
+    --off-white: #f7f8fc;
+    --text: #1a1a2e;
+    --text-muted: #5a6680;
+    --border: #e2e7f5;
+    --teal: #0e6b8a;
+  }
+  body { font-family: "DM Sans", sans-serif; background: var(--off-white); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy-dark);
+    background-image: radial-gradient(ellipse 70% 80% at 90% 50%, rgba(252,176,64,0.13) 0%, transparent 65%);
+    padding: 56px 40px 52px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-logo img { height: 68px; }
+  .hero-text { flex: 1; min-width: 260px; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy-dark);
+    font-size: 10px; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 100px;
+    margin-bottom: 14px;
+    animation: fadeUp 0.55s ease both;
+  }
+  .hero h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: 2.6rem; color: var(--white);
+    line-height: 1.15; margin-bottom: 10px;
+    animation: fadeUp 0.55s ease 0.1s both;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem; max-width: 520px;
+    animation: fadeUp 0.55s ease 0.2s both;
+  }
+  .hero-meta {
+    margin-top: 18px;
+    display: flex; gap: 10px; flex-wrap: wrap;
+    animation: fadeUp 0.55s ease 0.28s both;
+  }
+  .hero-meta a {
+    background: var(--gold); color: var(--navy-dark);
+    font-weight: 700; font-size: 0.9rem;
+    padding: 11px 26px; border-radius: 8px;
+    text-decoration: none;
+  }
+  .hero-meta a.outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: var(--white);
+  }
+
+  /* ── STATS STRIP ── */
+  .stats {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 24px 40px;
+    display: flex; gap: 0; flex-wrap: wrap;
+  }
+  .stat {
+    flex: 1; min-width: 150px;
+    text-align: center;
+    padding: 10px 16px;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: "DM Serif Display", serif;
+    font-size: 2rem; color: var(--navy);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(10,52,118,0.07);
+  }
+  .sticky-nav-inner {
+    display: flex; overflow-x: auto; scrollbar-width: none;
+    max-width: 1100px; margin: 0 auto; padding: 0 20px;
+  }
+  .sticky-nav-inner::-webkit-scrollbar { display: none; }
+  .nav-tab {
+    padding: 14px 20px;
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent;
+  }
+  .nav-tab:hover { color: var(--navy); border-color: var(--gold); }
+  .nav-tab.active { color: var(--navy); border-color: var(--gold); }
+
+  /* ── MAIN ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 14px; margin-bottom: 28px;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  .section-header h2 {
+    font-family: "DM Serif Display", serif;
+    font-size: 1.7rem; color: var(--navy);
+  }
+  .section-header p { color: var(--text-muted); font-size: 0.88rem; margin-top: 4px; }
+  .price-badge {
+    background: var(--navy); color: var(--white);
+    font-size: 0.82rem; font-weight: 700;
+    padding: 8px 18px; border-radius: 8px;
+    white-space: nowrap; align-self: center;
+    flex-shrink: 0;
+  }
+  .price-badge.gold { background: var(--gold); color: var(--navy-dark); }
+  .price-badge.teal { background: var(--teal); }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 64px; scroll-margin-top: 70px; }
+
+  /* ── FEATURED CARD ── */
+  .featured-card {
+    background: var(--navy);
+    border-radius: 16px; padding: 32px 36px;
+    margin-bottom: 28px;
+  }
+  .featured-card h3 {
+    font-family: "DM Serif Display", serif;
+    font-size: 1.5rem; color: var(--gold); margin-bottom: 8px;
+  }
+  .featured-card p {
+    color: rgba(255,255,255,0.8); font-size: 0.92rem;
+    max-width: 580px; margin-bottom: 18px;
+  }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tag {
+    background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9);
+    font-size: 0.75rem; font-weight: 600;
+    padding: 4px 12px; border-radius: 100px;
+  }
+  .tag-gold {
+    background: rgba(252,176,64,0.2); color: var(--gold-light);
+    font-size: 0.75rem; font-weight: 600;
+    padding: 4px 12px; border-radius: 100px;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy-dark);
+    font-weight: 700; font-size: 0.9rem;
+    padding: 11px 26px; border-radius: 8px;
+    text-decoration: none; display: inline-block;
+  }
+
+  /* ── SESSION CARDS GRID ── */
+  .session-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .session-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px; padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    text-decoration: none; color: inherit;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  }
+  .session-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(10,52,118,0.1);
+    transform: translateY(-2px);
+  }
+  .session-date {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .session-title {
+    font-weight: 600; font-size: 0.92rem;
+    color: var(--navy); line-height: 1.4;
+  }
+  .session-speaker { font-size: 0.8rem; color: var(--text-muted); }
+  .chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; }
+  .chip {
+    font-size: 0.7rem; font-weight: 700;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .chip-cpe { background: var(--pale-navy); color: var(--navy); }
+  .chip-topic { background: var(--gold-pale); color: #7a5200; }
+  .chip-free { background: #e8f5e9; color: #2e7d32; }
+  /* upcoming / past state */
+  .session-card.past { opacity: 0.65; }
+  .session-card.upcoming .session-date { color: var(--teal); }
+
+  /* ── INFO BANNER ── */
+  .info-banner {
+    background: linear-gradient(135deg, #f0f4ff 0%, var(--gold-pale) 100%);
+    border: 1.5px solid var(--pale-navy);
+    border-radius: 14px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+  .info-banner-icon { font-size: 2rem; flex-shrink: 0; }
+  .info-banner-body { flex: 1; }
+  .info-banner-body h4 { font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 4px; }
+  .info-banner-body p { font-size: 0.83rem; color: var(--text-muted); }
+  .badge-green {
+    background: #2e7d32; color: white;
+    font-weight: 800; font-size: 0.83rem;
+    padding: 8px 18px; border-radius: 8px;
+  }
+
+  /* ── CONTACT STRIP ── */
+  .contact {
+    background: var(--navy);
+    padding: 36px 40px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  }
+  .contact h3 {
+    font-family: "DM Serif Display", serif;
+    font-size: 1.3rem; color: var(--white); margin-bottom: 6px;
+  }
+  .contact p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+  .contact-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .contact-btns a {
+    background: var(--gold); color: var(--navy-dark);
+    font-weight: 700; font-size: 0.85rem;
+    padding: 10px 20px; border-radius: 8px;
+    text-decoration: none;
+  }
+  .contact-btns a.outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: var(--white);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 32px 20px; }
+    .hero h1 { font-size: 1.9rem; }
+    .stats { padding: 16px 20px; }
+    .main { padding: 28px 16px 60px; }
+    .contact { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-logo">
+    <!-- LOGO 1: transparent bg, on dark -->
+    <img src="data:image/jpeg;base64,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pCU/kTXltbOneK9e0kKtlqtzGi/djL7kH/AWyP0rmnRxMf4VTTzX6m8atCXxw+7/ACOq/wCFOeIP+fzTf+/r/wDxFXbb4MXrAfadXt4j3EcTP+pxWXa/FvxLboFlFncEfxSwkH/x0gfpV0fGXVwuDp1iT6jeAfwzXPOWY7JL1X/BNYrBbts6zS/hNoFkyvdtcXzgcrI21CfXC4P5k121pZ21hbrb2lvFBCvSOJAqjPXgcV4vL8YdecMI7TT4weh2OSPzbH6Vz+o+O/EupqVm1adEP8MGIhj0O3GfxzXJPB4/EaVZWX9dEdEcThaPwR1Pb9e8Y6L4dRvtl2rzjpbwkNIT7jPH44FeKeK/G2o+KptsuILJGJjtkJx9WP8AEcfh6AZOeZyT1NJ2ruwmWUsO+Z6yOTEY2pV0WiEooor0jiCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD7f8AAn/JPPDX/YKtf/RS10Fc/wCBP+SeeGv+wVa/+ilroKAPgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+3/An/JPPDX/AGCrX/0UtdBXP+BP+SeeGv8AsFWv/opa6CgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="TCEA">
+  </div>
+  <div class="hero-text">
+    <div class="hero-badge">2026–2027 Season</div>
+    <h1>Lunch &amp; <em>Learn</em><br>Webinar Series</h1>
+    <!-- ✏️ UPDATE: tagline -->
+    <p>Every Wednesday · 11:45 AM – 12:15 PM CST · Free for TCEA members<br>Pack your lunch with powerful ideas.</p>
+    <div class="hero-meta">
+      <a href="#schedule">View Schedule</a>
+      <a href="https://tcea.org/register" class="outline">Register Free →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STATS STRIP ══ -->
+<!-- ✏️ UPDATE: numbers each year -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">30+</div>
+    <div class="stat-label">Sessions This Year</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">30</div>
+    <div class="stat-label">Minutes Each</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">Free</div>
+    <div class="stat-label">For TCEA Members</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">1 CPE</div>
+    <div class="stat-label">Per Session</div>
+  </div>
+</div>
+
+<!-- ══ STICKY NAV ══ -->
+<nav class="sticky-nav">
+  <div class="sticky-nav-inner">
+    <a href="#about" class="nav-tab active">About</a>
+    <a href="#schedule" class="nav-tab">📅 Schedule</a>
+    <a href="#archive" class="nav-tab">📼 Past Sessions</a>
+    <a href="#resources" class="nav-tab">📚 Resources</a>
+    <a href="https://tcea.org" class="nav-tab">🌐 TCEA.org</a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- ══ ABOUT ══ -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <div>
+        <h2>🍽️ About the Series</h2>
+        <!-- ✏️ UPDATE: year -->
+        <p>Everything you need to know about the 2026–2027 Lunch &amp; Learn season</p>
+      </div>
+      <span class="price-badge gold">FREE · 1 CPE / session</span>
+    </div>
+
+    <div class="featured-card">
+      <h3>Join Us Every Wednesday</h3>
+      <!-- ✏️ UPDATE: description -->
+      <p>TCEA's Lunch &amp; Learn series brings Texas educators together for 30 minutes of practical ideas, classroom strategies, and edtech insights — live and on-demand. No cost, no travel, no problem.</p>
+      <div class="tags">
+        <span class="tag">Every Wednesday</span>
+        <span class="tag">11:45 AM – 12:15 PM CST</span>
+        <span class="tag-gold">Free Registration</span>
+      </div>
+      <!-- ✏️ UPDATE: registration link -->
+      <a href="https://tcea.org/register" class="btn-primary">Register for Any Session →</a>
+    </div>
+
+    <div class="info-banner">
+      <div class="info-banner-icon">🎁</div>
+      <div class="info-banner-body">
+        <h4>TCEA Members Register Free</h4>
+        <!-- ✏️ UPDATE: non-member price if applicable -->
+        <p>All sessions are free for TCEA members. Non-members may attend for a small fee or join TCEA to unlock the full year.</p>
+      </div>
+      <div class="badge-green">FREE · Members</div>
+    </div>
+  </section>
+
+  <!-- ══ UPCOMING SCHEDULE ══ -->
+  <section class="section" id="schedule">
+    <div class="section-header">
+      <div>
+        <h2>📅 Upcoming Sessions</h2>
+        <!-- ✏️ UPDATE: semester label -->
+        <p>Fall 2026 · Wednesdays · 11:45 AM – 12:15 PM CST</p>
+      </div>
+      <span class="price-badge">Fall 2026</span>
+    </div>
+
+    <!-- ✏️ UPDATE: add/remove session cards each semester -->
+    <!-- SESSION CARD PATTERN:
+         class="session-card upcoming" = future session (link to detail page)
+         class="session-card past"     = completed (no link, or link to recording)
+         Change session-date, session-title, session-speaker, chips as needed. -->
+    <div class="session-grid">
+
+      <a href="session-template.html" class="session-card upcoming">
+        <div class="session-date">Wed, Sep 3, 2026</div>
+        <div class="session-title">AI Tools Every Educator Should Know in 2026</div>
+        <div class="session-speaker">Presenter Name · District Name</div>
+        <div class="chip-row">
+          <span class="chip chip-cpe">1 CPE</span>
+          <span class="chip chip-topic">AI &amp; Tech</span>
+        </div>
+      </a>
+
+      <a href="session-template.html" class="session-card upcoming">
+        <div class="session-date">Wed, Sep 10, 2026</div>
+        <div class="session-title">Google Classroom Tips Your Students Will Love</div>
+        <div class="session-speaker">Presenter Name · District Name</div>
+        <div class="chip-row">
+          <span class="chip chip-cpe">1 CPE</span>
+          <span class="chip chip-topic">Google</span>
+        </div>
+      </a>
+
+      <a href="session-template.html" class="session-card upcoming">
+        <div class="session-date">Wed, Sep 17, 2026</div>
+        <div class="session-title">Digital Citizenship in the Age of GenAI</div>
+        <div class="session-speaker">Presenter Name · District Name</div>
+        <div class="chip-row">
+          <span class="chip chip-cpe">1 CPE</span>
+          <span class="chip chip-topic">Digital Citizenship</span>
+        </div>
+      </a>
+
+      <a href="session-template.html" class="session-card upcoming">
+        <div class="session-date">Wed, Sep 24, 2026</div>
+        <div class="session-title">Canva for Educators: Beyond the Basics</div>
+        <div class="session-speaker">Presenter Name · District Name</div>
+        <div class="chip-row">
+          <span class="chip chip-cpe">1 CPE</span>
+          <span class="chip chip-topic">Creativity</span>
+        </div>
+      </a>
+
+      <a href="session-template.html" class="session-card upcoming">
+        <div class="session-date">Wed, Oct 1, 2026</div>
+        <div class="session-title">Formative Assessment Tools That Actually Work</div>
+        <div class="session-speaker">Presenter Name · District Name</div>
+        <div class="chip-row">
+          <span class="chip chip-cpe">1 CPE</span>
+          <span class="chip chip-topic">Assessment</span>
+        </div>
+      </a>
+
+      <a href="session-template.html" class="session-card upcoming">
+        <div class="session-date">Wed, Oct 8, 2026</div>
+        <div class="session-title">Coding in the Classroom: Where to Start</div>
+        <div class="session-speaker">Presenter Name · District Name</div>
+        <div class="chip-row">
+          <span class="chip chip-cpe">1 CPE</span>
+          <span class="chip chip-topic">Coding</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ══ PAST SESSIONS ══ -->
+  <section class="section" id="archive">
+    <div class="section-header">
+      <div>
+        <h2>📼 Past Sessions</h2>
+        <p>Watch recordings and download resources from completed sessions</p>
+      </div>
+      <span class="price-badge teal">On Demand</span>
+    </div>
+
+    <!-- ✏️ UPDATE: move cards from upcoming to here, add recording link, mark as .past -->
+    <div class="session-grid">
+      <a href="#" class="session-card past">
+        <div class="session-date">Wed, Aug 27, 2026 · 🎬 Recording Available</div>
+        <div class="session-title">Kickoff: What's New in EdTech This Year</div>
+        <div class="session-speaker">TCEA Team</div>
+        <div class="chip-row">
+          <span class="chip chip-cpe">1 CPE</span>
+          <span class="chip chip-free">Watch Free</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ RESOURCES ══ -->
+  <section class="section" id="resources">
+    <div class="section-header">
+      <div>
+        <h2>📚 Resources</h2>
+        <p>Helpful links for participants and presenters</p>
+      </div>
+    </div>
+
+    <!-- ✏️ UPDATE: links each year -->
+    <div class="session-grid">
+      <a href="https://blog.tcea.org" class="session-card">
+        <div class="session-title">📰 TechNotes Blog</div>
+        <div class="session-speaker">Articles, ideas, and strategies from TCEA</div>
+      </a>
+      <a href="https://tcea.org/events/" class="session-card">
+        <div class="session-title">📆 Upcoming TCEA Events</div>
+        <div class="session-speaker">Workshops, conferences, and more</div>
+      </a>
+      <a href="https://tcea.org/learn/courses/" class="session-card">
+        <div class="session-title">💻 Online Courses</div>
+        <div class="session-speaker">Self-paced courses with CPE credit</div>
+      </a>
+      <a href="https://convention.tcea.org" class="session-card">
+        <div class="session-title">🎉 TCEA Convention 2027</div>
+        <div class="session-speaker">Annual convention — San Antonio, Texas</div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ CONTACT STRIP ══ -->
+<div class="contact">
+  <div>
+    <h3>Questions? Contact TCEA</h3>
+    <!-- ✏️ UPDATE: contact info if needed -->
+    <p>📧 registration@tcea.org &nbsp;·&nbsp; 📞 512-475-8500 &nbsp;·&nbsp; 🌐 tcea.org/lunchlearn</p>
+  </div>
+  <div class="contact-btns">
+    <a href="mailto:registration@tcea.org">Email TCEA</a>
+    <a href="https://tcea.org" class="outline">TCEA.org</a>
+  </div>
+</div>
+
+<script>
+  // Active nav tab on scroll
+  const tabs = document.querySelectorAll('.nav-tab[href^="#"]');
+  const sections = [...tabs].map(t => document.querySelector(t.getAttribute('href'))).filter(Boolean);
+  window.addEventListener('scroll', () => {
+    let current = sections[0];
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) current = s; });
+    tabs.forEach(t => {
+      t.classList.toggle('active', t.getAttribute('href') === '#' + current.id);
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
