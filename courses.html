@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCEA Professional Learning Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0A3476;
+    --navy-dark: #071f4a;
+    --navy-mid: #12428f;
+    --gold: #FCB040;
+    --gold-light: #fdd17a;
+    --gold-pale: #FEF0D0;
+    --pale-navy: #D0D8F0;
+    --white: #ffffff;
+    --off-white: #f7f8fc;
+    --text: #1a1a2e;
+    --text-muted: #5a6680;
+    --border: #e2e7f5;
+    --teal: #0e6b8a;
+  }
+  body { font-family: "DM Sans", sans-serif; background: var(--off-white); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* HERO */
+  .tcea-hero { background: var(--navy-dark); background-image: radial-gradient(ellipse 80% 60% at 80% 50%, rgba(252,176,64,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 10% 100%, rgba(18,66,143,0.6) 0%, transparent 60%); padding: 72px 40px 60px; text-align: center; position: relative; overflow: hidden; }
+  .tcea-hero::before { content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 60px; background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%); }
+  .tcea-hero-logo { display: block; margin: 0 auto 28px; height: 64px; width: auto; }
+  .tcea-hero-badge { display: inline-block; background: var(--gold); color: var(--navy-dark); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; margin-bottom: 22px; }
+  .tcea-hero h1 { font-family: "DM Serif Display", serif; font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--white); line-height: 1.15; margin-bottom: 16px; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .tcea-hero h1 em { font-style: italic; color: var(--gold); }
+  .tcea-hero p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 560px; margin: 0 auto 32px; }
+  .tcea-hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* BUTTONS */
+  .btn-primary { background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 0.9rem; padding: 12px 28px; border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline { border: 1.5px solid rgba(255,255,255,0.35); color: var(--white); font-weight: 600; font-size: 0.9rem; padding: 12px 28px; border-radius: 8px; text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(252,176,64,0.08); }
+
+  /* STATS */
+  .tcea-stats { display: flex; justify-content: center; background: var(--white); border-bottom: 2px solid var(--border); flex-wrap: wrap; }
+  .tcea-stat { padding: 22px 36px; text-align: center; border-right: 1px solid var(--border); flex: 1; min-width: 140px; }
+  .tcea-stat:last-child { border-right: none; }
+  .tcea-stat-num { font-family: "DM Serif Display", serif; font-size: 2rem; color: var(--navy); display: block; line-height: 1; }
+  .tcea-stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-top: 4px; display: block; }
+
+  /* NAV */
+  .tcea-nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--border); box-shadow: 0 2px 12px rgba(10,52,118,0.07); }
+  .tcea-nav-inner { display: flex; overflow-x: auto; scrollbar-width: none; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  .tcea-nav-inner::-webkit-scrollbar { display: none; }
+  .tcea-nav-tab { padding: 16px 22px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .tcea-nav-tab:hover, .tcea-nav-tab.active { color: var(--navy); border-color: var(--gold); }
+
+  /* MAIN */
+  .tcea-main { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* SECTION HEADER */
+  .tcea-section { margin-bottom: 64px; scroll-margin-top: 70px; }
+  .tcea-section-header { display: flex; align-items: flex-end; gap: 20px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--border); flex-wrap: wrap; }
+  .tcea-section-icon { font-size: 1.8rem; line-height: 1; }
+  .tcea-section-meta { flex: 1; }
+  .tcea-section-meta h2 { font-family: "DM Serif Display", serif; font-size: 1.7rem; color: var(--navy); line-height: 1.2; }
+  .tcea-section-meta p { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
+  .tcea-price-badge { background: var(--navy); color: var(--white); font-size: 0.85rem; font-weight: 700; padding: 8px 18px; border-radius: 8px; white-space: nowrap; }
+  .tcea-price-badge.gold { background: var(--gold); color: var(--navy-dark); }
+  .tcea-price-badge.teal { background: var(--teal); color: var(--white); }
+
+  /* FEATURED CARD */
+  .tcea-featured-card { background: var(--navy); border-radius: 16px; padding: 36px 40px; color: var(--white); position: relative; overflow: hidden; margin-bottom: 28px; }
+  .tcea-featured-card::before { content: ""; position: absolute; top: -60px; right: -60px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(252,176,64,0.18) 0%, transparent 70%); }
+  .tcea-featured-card h3 { font-family: "DM Serif Display", serif; font-size: 1.5rem; margin-bottom: 10px; color: var(--gold); }
+  .tcea-featured-card p { font-size: 0.92rem; color: rgba(255,255,255,0.8); max-width: 600px; margin-bottom: 20px; line-height: 1.65; }
+  .tcea-featured-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .tcea-tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.5px; }
+  .tcea-tag.gold-tag { background: rgba(252,176,64,0.2); color: var(--gold-light); }
+
+  /* COURSE GRID */
+  .tcea-course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .tcea-course-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 18px 20px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; display: flex; flex-direction: column; gap: 8px; }
+  .tcea-course-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(10,52,118,0.1); transform: translateY(-2px); }
+  .tcea-course-title { font-weight: 600; font-size: 0.88rem; color: var(--navy); line-height: 1.4; }
+  .tcea-course-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: auto; }
+  .tcea-chip { font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.3px; }
+  .tcea-chip-cpe { background: var(--pale-navy); color: var(--navy); }
+  .tcea-chip-badge { background: var(--gold-pale); color: #7a5200; }
+  .tcea-chip-gt { background: #e8f5e9; color: #2e7d32; }
+  .tcea-chip-price { background: #f3e8ff; color: #6b21a8; }
+
+  /* CATEGORY LABEL */
+  .tcea-cat-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 28px 0 12px; }
+
+  /* BOOSTER GRID */
+  .tcea-booster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tcea-booster-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; display: flex; flex-direction: column; gap: 10px; }
+  .tcea-booster-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(10,52,118,0.1); transform: translateY(-2px); }
+  .tcea-booster-icon { font-size: 1.5rem; line-height: 1; }
+  .tcea-booster-title { font-weight: 600; font-size: 0.88rem; color: var(--navy); line-height: 1.4; }
+  .tcea-booster-price { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-top: auto; }
+
+  /* CERT CARDS */
+  .tcea-cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .tcea-cert-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; position: relative; overflow: hidden; }
+  .tcea-cert-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--navy); }
+  .tcea-cert-card.cert-gold::before { background: var(--gold); }
+  .tcea-cert-card:hover { border-color: var(--navy); box-shadow: 0 6px 24px rgba(10,52,118,0.12); transform: translateY(-2px); }
+  .tcea-cert-card h4 { font-family: "DM Serif Display", serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+  .tcea-cert-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 16px; }
+  .tcea-cert-footer { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* MLS */
+  .tcea-mls-card { background: var(--white); border: 1.5px dashed var(--border); border-radius: 14px; padding: 32px; text-align: center; }
+  .tcea-mls-card h3 { font-family: "DM Serif Display", serif; color: var(--navy); margin-bottom: 8px; }
+  .tcea-mls-card p { font-size: 0.88rem; color: var(--text-muted); max-width: 460px; margin: 0 auto 20px; }
+
+  /* FREE BANNER */
+  .tcea-free-banner { background: linear-gradient(135deg, #f0f4ff 0%, var(--gold-pale) 100%); border: 1.5px solid var(--pale-navy); border-radius: 14px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 48px; }
+  .tcea-free-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .tcea-free-content { flex: 1; min-width: 200px; }
+  .tcea-free-content h3 { font-weight: 700; color: var(--navy); font-size: 1rem; margin-bottom: 4px; }
+  .tcea-free-content p { font-size: 0.85rem; color: var(--text-muted); }
+  .tcea-free-badge { background: #2e7d32; color: var(--white); font-weight: 800; font-size: 0.85rem; padding: 8px 18px; border-radius: 8px; white-space: nowrap; }
+
+  /* CONTACT */
+  .tcea-contact { background: var(--navy); border-radius: 16px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 60px; }
+  .tcea-contact h3 { font-family: "DM Serif Display", serif; font-size: 1.4rem; color: var(--white); margin-bottom: 6px; }
+  .tcea-contact p { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+  .tcea-contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .tcea-contact a { background: var(--gold); color: var(--navy-dark); font-weight: 700; font-size: 0.85rem; padding: 10px 20px; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+  .tcea-contact a:hover { background: var(--gold-light); }
+  .tcea-contact a.outline-link { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); }
+  .tcea-contact a.outline-link:hover { background: rgba(255,255,255,0.08); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .tcea-hero > * { animation: fadeUp 0.55s ease both; }
+  .tcea-hero > *:nth-child(1) { animation-delay: 0.05s; }
+  .tcea-hero > *:nth-child(2) { animation-delay: 0.15s; }
+  .tcea-hero > *:nth-child(3) { animation-delay: 0.25s; }
+  .tcea-hero > *:nth-child(4) { animation-delay: 0.35s; }
+  .tcea-hero > *:nth-child(5) { animation-delay: 0.4s; }
+
+  @media (max-width: 640px) {
+    .tcea-hero { padding: 48px 20px 50px; }
+    .tcea-featured-card, .tcea-contact { padding: 24px 20px; }
+    .tcea-main { padding: 32px 16px 60px; }
+    .tcea-stat { padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="tcea-hero">
+  <img class="tcea-hero-logo" src="data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/wAARCACoAVADACIAAREBAhEB/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMAAAERAhEAPwD5/ooooAKKKKACijvWra3GnXCpb6jC0IA2rd2qjevpuQkBwPYq3OSTgCgDKorY1HQbqwtlvEaO709ztS7tyWjJwDg5AKtz0YA/WsihNPYbVhKKKKBBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH2/4E/wCSeeGv+wVa/wDopa6Cuf8AAn/JPPDX/YKtf/RS10FAHwBRRRQAUUUUAFFFFAGtouvX2g3Rls3GyQbZoJBujmX+6y9xyR688GurPhzSPGlpJeeGNtnqUa7p9Llf5T7xk9s8c8cjO3jPn9W7C+utNvYruzmaG4ibcjqeh/qOxHfpWVSm370HZ/h8zSE0vdkrr+tiK4tprS4kt7mJ4poztdHBDKfQioa9dhOk/FTS2SVY7HxDbIPnXkSD6dSpPbkqSOeefMNV0q70bUJbG+hMU8Z5HYjsQe4PrU0a6m3CStJboqpScVzLWL6lCiiitzEKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD7f8Cf8k88Nf9gq1/8ARS10Fc/4E/5J54a/7BVr/wCilroKAPgCiiigAooooAKKKKACiiigC5YX1xpt7FeWkzRTxMGR1PIP9R2I79K9iibTfip4UKyLHb6vbAAtjJjc9xznY2Dxzj3IBrxKtfw7rt14b1mHULY52nEkecCRD1U/54IB7VzYmg6i5oO0ls/09DooVlB8stYvcq6ppl3pGoy2N7EY54mwwPQ+hB7g9qpY4r3fxVoFn498Mwarpm1rwRb7d+AXHOY2P19Twc9ATXhckbxSNHIpV1JDKRgg+hFLC4lV46q0luuwYih7KWmqezI6KKK6jnCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD7f8AAn/JPPDX/YKtf/RS10Fc/wCBP+SeeGv+wVa/+ilroKAPgCiiigAooooAKKKKACiiigBaKKt2dm95LtU4ReWY9B/j9KaV9EB6B8J/Exs9QfQ7lz9nuSXgJ6JIByPoQPzA9TV34m+EE/tCPW7UCOOc7boBcgNjhgPfoenI9TXI21vFaY+zjaRyZWOCcc5J7DvxgDAznGa9t0i7tfFHheGV2jnjnjKS7QcbhwcAjIIIyMj0NebmFCWBrQxXSWjR24SrHFU5UOq2PCF07T7UK9wQRjnzXIB56gLg9u2aiOo6dbgLDaLKMnO6NRj0wxBJ/ECq+v6VcaLrt3p9yS0kUhG8/wAYPIb8QQfxrNr1/bQkr046feed7KSdpvb5Gh/au3cI7S3UHvtOf0IH6VC2o3DNuPlnHRWjVgPwINVKltoWubmKBSA0jhAT0yTioc5MpRSLX9qTmNkMVpgjGfssYI+h29aoVr/2FL/z92//AI//APE1kkYolGUfiQRlF7MbRRRUFBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB9v+BP+SeeGv8AsFWv/opa6Cuf8Cf8k88Nf9gq1/8ARS10FAHwBRRRQAUUUUAFFFFABRRRQBIkbSSKiDLMcAep9K6eGBLaBYEIIH3mB+83c/T09se9YekhDqUW/oAxH1CnH64roN3lgybN4QFivqByR+QNehgaad6j6HJipvSC6mRq14S5tYzhVP7w9Nx9D9PT1/Cu/wDg3q5Et/o7sdrAXMQPQEYVvzyv5V5WzFmJJySeSa3/AAPqB03xnpc+flaYRN9H+U/zz+FeZj08TTmn12/Q7sI1QlFo734waHvt7PXIl+aM/Z5sD+E5Kk/jkfiK8hr6e8RaWuteHr/TjgmeEhMngOOVz9GAP4V8xEEEj0rzcorudHke8TtzCly1OZbMStPS7O6N7aXAt5fJ81W8zYduA3Jz+BrMrprOeJtPsYhIpkCFdmQTkuxxjryCPzr26FNTmk2eXUnyRuT1z39l6gzHFlcH/tk3+FdDUf2mDOPOj/76H+NeriKCqpJu1jgo1eS9le5zcsMsEhjmjaNx1Vhg1F3q5qbB75ypBGByD7Crmmacjxi4nXcDny09ccZPt1A9SD2GD5TpN1HCOp6HOuTmehnQ2s9wCYoXdQQCwHA+p6Cp20m8RN5iUj0Eik/kDmuhJJB6BVGeAAFGfyAGfoKZujJws0LNkABZVJJPQAA5P4V1/UYr4pWOb6038K0OXlhlgfZLE8bejrg/rUddc0YlUwyR+YpONhBPPTI7g+457VzN5DHDdPHFIJEXow/x6HHTI4Nc1fDujvsbUqyqeRW71bi067mCskDBW+6zfKD9CeDWpp2nxwwrNMA8rgFVPIQHufUn9B79L00qxqZJpAAe7Hk9M47k8jpWlLCOceaTsiamIUXypXZz8ml3sZwYC5PaMh//AEEmqeMGuqjlimBMUqSAHHBwfyODj3xioryyS9U5ws2Plc9/QE/pk9OOwq54L3eaErkxxPvcs1Y5qilIIJBGDWxobIPOAX96u1lbaOBnBIPUckdK44Q5pKJ0SlyxuZy2V0yCQW0pQ/xBDj86BYXTNhbeVj6BCa6d/lYea6RlhkGRguR6gkjNNGG+5JHIcZPluGwPU4Jx1713fUY7ORzfWn0icq6NG5R1KsDggjGKYK6ueGO6j8ucEgDCt1KfT8+nQ/kRzVxC1vO8T9VOMjofeuavh5UXrsbUqqqbEFFFFc5qFFFFABRRRQB9v+BP+SeeGv8AsFWv/opa6Cuf8Cf8k88Nf9gq1/8ARS10FAHwBRRRQAUUUUAFFFFABRRRQBf0hlXU4t+SGDKBjqxUgfqRXQBDIDFvCBwULHoARgn8ia5NHaNw6sQynII7GupilW4hSZMYYcgdFPcfh/Ig969HAzT5qb6nHiovSa6HKEEEinwyvBPHKhwyMGU+hHNaGsQeXdeeB8s2Sef4u/8Aj+OO1Zg6iuGpBwk4s6oyUkmj6vjcSRJICCGUEEHI5Ga+a/GFl/Z/i/VbfAUC4ZlA7Kx3D9CK+kLMFbK3VhhhGoI9DgV4N8UYRF48vGBz5qRORjp8gH9M/jXzOUy5cVOH9bnt49XoRkzjKuaV/wAhezH/AE3T/wBCFU6u6T/yF7P/AK7p/wChCvpI7nivY6GuSP3j9a62uSP3j9a9LH/DE4sJvIlt4XuLiKBPvSOEGfUnFdUcZG1SqgAKCc4AGAM98AAVzemMF1WzYnAEyEk9huFdFSy9JtvqVi27JdDF1a6aS5a3UkRxHaR/eYcEn8c49vqc5lT3cP2e7mh3btjkBv7wz1/rUFcNScpTbkdMIqMUkaA1W4+xtbkg5G3zDncF9M+n9CR0xiGwh+0X0MZUspbLD1Ucn9Aaq1o6K6x6mhc4BRwCfUowH6mjmcmlJjaUU2kb4BllAJ5ZuSR3J61hXVrqN3cNIbO5x0VRGSFHYDittQXYKOpIAzVT+0rPvOP++G/wr1cTCMoqLlZHn0ZuLbUbmXHp2qQyLJHZ3KuDkERn/Ct45wCyFCQCVII2kgEjB54ziq39pWf/AD8D/vhv8KP7Ssv+fgf98t/hWdBU6Lvz3RdVzqK3KZmsRbL/AH4wJV39ep6E/iQTVW1NwJx9lMnmnIHl53fpVvVrqG6mh8liwjj2k4I53MeM89CK1rS3FrbLGq4dgDKTwSeuD9PT2z3rk9l7Ss4welzo9pyU05GQukXbkb9iZGcs4P8ALOPxpw0m9jmUwshZfmDrJtx+JxzWjdX8Nm4R0d3wCVU7eD05IPPTsevaq39uQHj7LIuT180HH4bR/OtZUaEXZz1IjUqy1UdDRR2eNWdSrlRuBGMHHOAOMZzj2rG1uIreRyEkmSINz7EqP0UVsRTRzxiSLcUPTcMH0OQCf51la/8A6+1/64f+ztW+Kt9XWt/MyoX9s1axkUUUV5J3hRRRQAUUUUAfb/gT/knnhr/sFWv/AKKWugrn/An/ACTzw1/2CrX/ANFLXQUAfAFFFFABRRRQAUUUUAFFFFAC1f0+9+yS4fJhf7wHb3H+efbqKFFVGTi7oTSkrM6ySOKeEo+JIZACCp6jsQT0I5/UHuKyLbR5Zdcs7AgstzOsaOBjcCwGfYjPIqvZ38loQv34SclCe/qD2P8AnnFel/Dm2Oo6yL6FibW3BLblH3iCACDnBwc5B7deTXRicRSnRdWTs4r7zGhSnGoqa1T/AAPWAAAAAAAMADtXgPxQl3+PL1cY8uOJc56/ID/Wvf6+ZvFWo/2r4p1O8D70kuGCN6oDhf0Ar4/JouWIlPy/M+izJpUVHuY1XNLYJqtmzHAEyEk9vmFVKSvp0eIddWZJoheR2iuYkQ5Kq+7djsDgEfrT7fWInUC43LJwC4GVPqT3HbgA96sSahYxgEXIl56Ro2QP+BAD9a9acqFeC5nax58Y1aUnZXuYl9a/Yrow79+FVt2MZyAf610FvcC7t1nDZY/fHGQ3fj0PUe3HY1gajdLeXjTKpVdqqAfZQP6ZpltdSWsu+NhzwQRwR7iuKlWVGpdao6Z03Uh725uXlgl6AxYJMAAHPII9D36dCM8DGOlZq6LOZGVpIlUdGySG+gxn88Veh1a2l2iTdCx6k/MvTrxz17Y/GpzfWIB/02I46DY/P/jtdUqeHqvm5rGEZ1oLlauMXTbVLZoNpbccmYgbs9iB2A9M85OT0xiSLLp98AGHmRMGVh69RWjcaygQi1Rt5H35AOPoOfz/AErGYlmLMSSepNc2I9irRp9Dej7TVzOrjkSaJZYj8j8jnOD3B9x0/XoRWffaWZ5DNAVDsfmQ8AknqD0HckHAH6DOtL6Wzc7ACjfeQ9D/AIGtaLVbOUgM7Q5BzvUkD0AIyT9cCuhVqVeCjUdmYunOlPmhqigujXZYCTyowe5kBx+C5P6VfbSbT7P5S7g46SnqT7jpj26jrk9DI+oWSIWF0jn+6qNk/mAP1qlc6zkbbQMnP+sY/N+AHT9T7io9nhqad3crnrTaSVjKkjaKVo34ZGKn6iusaVZ3My/dk+cDPQHnH15rkK0rHUzbxrDKpaLPBHVfXHr649fxrLC1o0567Glem5x03JtSsJXnaeFS6sFyoOWBxjoeTkjPHTNV4NKuJW+dfKUHBL8H8utaqahZOm43Sof7ro2f0BH61DNq9rECIw0zg8cbVPHUk8nntgfWtalGg25c2hnGpVSUeXUvBURVVF2qo2gew4yff19TmsnX/wDX2v8A1w/9narMer2hjQzGYSbfm2xjGcYOOR9elUdXu4LyWA2/mFY4thLqAc7mPABPGCKrEVaboKMX8iaNOaq3kjMooorzTtCiiigAooooA+3/AAJ/yTzw1/2CrX/0UtdBXP8AgT/knnhr/sFWv/opa6CgD4JtbWW+uY7a3UNM5IVSwXJx0BJAyew7nAGSaZLDJBM8U0bxyIxV0ZcMpHBBHY1FW7a61bXKRWuu273dugCJcRELcQqD0VjwwA4CtkAcArSba1GlcwqK6qTwXcXtq154fu4dXt1GWjj+SeMf7UZ565AwTnFc3PbzWszQ3ETxSqcMkilWH1BpRnGXwsbi47kFFFFUSFFFFAC0UVq6L4f1LX7sW2nWzSsMbm/hQHux6D/OKHZK7Gk3oirYWNzqV7DaWkTSzysFRF6k/wCHvX0X4T8PR+GdBhsFKvLy88gHDuepHsAAPwrP8GeCLXwrbGV2WfUZVAkmxwo/urnoPU9TjtwB0l5eW9haS3V3KsUESlndu3+fTvXzeZ49Vf3NLVdfM9nBYT2f7ypuYfjbXIdC8NzyvIySz/uY9oBbJByQCR0GTnPHFeKtb2WqfMjI0zn70Z+fOM8qcFu+SBye9O8aeKZfFOstMAUtIcpbR56L3Y+5wP0HOM1zNexlVBYajacdX+B52YVfb1PdeiNOfRZ4yTEyzKOcDhhzjGD1PsM1nvG8TlHRkYdVYYIqzDqV5CAFnYgDaA4DAD2Bzj8KsjWncKk9vFJGOdvPJ/HI/SvSapy2dvU4k5rfUyqK0jcabMcNZyQjqWR9xJ+hwAPwqa4Hh0wgWzamsvdpFjZfyBHv3qOXzLUjGoq3OlgsINvcXDyZ5WSBVH4EMf5VUqBhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB9v+BP8Aknnhr/sFWv8A6KWugrn/AAJ/yTzw1/2CrX/0UtdBQB8AUUUUAWrO/utPuVubS4lt5l6PGxUj8RXc2PxJivYo7bxVo9tqca5AnEaiRQepweM/TbXntFZ1KMKnxb9+ppCrKG2x6vD4V8AeJcf2RqslnO3CwGXv/uuNzfgaiuPgvcg/6NrMLj/ppCU/kTXltbOneK9e0kKtlqtzGi/djL7kH/AWyP0rmnRxMf4VTTzX6m8atCXxw+7/ACOq/wCFOeIP+fzTf+/r/wDxFXbb4MXrAfadXt4j3EcTP+pxWXa/FvxLboFlFncEfxSwkH/x0gfpV0fGXVwuDp1iT6jeAfwzXPOWY7JL1X/BNYrBbts6zS/hNoFkyvdtcXzgcrI21CfXC4P5k121pZ21hbrb2lvFBCvSOJAqjPXgcV4vL8YdecMI7TT4weh2OSPzbH6Vz+o+O/EupqVm1adEP8MGIhj0O3GfxzXJPB4/EaVZWX9dEdEcThaPwR1Pb9e8Y6L4dRvtl2rzjpbwkNIT7jPH44FeKeK/G2o+KptsuILJGJjtkJx9WP8AEcfh6AZOeZyT1NJ2ruwmWUsO+Z6yOTEY2pV0WiEooor0jiCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD7f8AAn/JPPDX/YKtf/RS10Fc/wCBP+SeeGv+wVa/+ilroKAPgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+3/An/JPPDX/AGCrX/0UtdBXP+BP+SeeGv8AsFWv/opa6CgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="TCEA">
+  <div class="tcea-hero-badge">45+ Years Supporting Educators</div>
+  <h1>Professional Learning<br><em>Built for Educators</em></h1>
+  <p>Self-paced, credit-bearing courses, certifications, and knowledge boosters — designed by educators, for educators. Flexible online access, 24/7.</p>
+  <div class="tcea-hero-actions">
+    <a href="https://tcea.org/pd" class="btn-primary">Browse Full Catalog</a>
+    <a href="https://tinyurl.com/tceahelp" class="btn-outline">Get a Quote</a>
+  </div>
+</div>
+
+<div class="tcea-stats">
+  <div class="tcea-stat"><span class="tcea-stat-num">100+</span><span class="tcea-stat-label">Courses Available</span></div>
+  <div class="tcea-stat"><span class="tcea-stat-num">12–49</span><span class="tcea-stat-label">CPE Hours Per Option</span></div>
+  <div class="tcea-stat"><span class="tcea-stat-num">$49</span><span class="tcea-stat-label">Membership Included Free</span></div>
+  <div class="tcea-stat"><span class="tcea-stat-num">24/7</span><span class="tcea-stat-label">Online Access</span></div>
+</div>
+
+<nav class="tcea-nav">
+  <div class="tcea-nav-inner">
+    <a href="#accelerator" class="tcea-nav-tab">🚀 Accelerator</a>
+    <a href="#courses" class="tcea-nav-tab">✅ Courses</a>
+    <a href="#boosters" class="tcea-nav-tab">💡 Knowledge Boosters</a>
+    <a href="#mls" class="tcea-nav-tab">🎓 Mastery Series</a>
+    <a href="#certs" class="tcea-nav-tab">🏅 Certifications</a>
+    <a href="#parents" class="tcea-nav-tab">👨‍👩‍👧 Parent Boosters</a>
+    <a href="#individual" class="tcea-nav-tab">👤 All-Access Pass</a>
+  </div>
+</nav>
+
+<main class="tcea-main">
+
+  <div class="tcea-free-banner">
+    <div class="tcea-free-icon">🎁</div>
+    <div class="tcea-free-content">
+      <h3>Free with Every Enrollment: TCEA Online Learning Orientation Course</h3>
+      <p>2 CPE hours · Self-paced · Strategies for long-term information retention · Available to ALL participants</p>
+    </div>
+    <div class="tcea-free-badge">FREE · 2 CPE hrs</div>
+  </div>
+
+  <section class="tcea-section" id="accelerator">
+    <div class="tcea-section-header">
+      <div class="tcea-section-icon">🚀</div>
+      <div class="tcea-section-meta">
+        <h2>Educator Accelerators</h2>
+        <p>Structured, hands-on programs for innovative educators and leaders</p>
+      </div>
+      <div class="tcea-price-badge">$149 each · 22 CPE hrs</div>
+    </div>
+    <div class="tcea-featured-card">
+      <h3>TCEA AI-Amplified Educator Accelerator</h3>
+      <p>A comprehensive professional learning program built for educators ready to lead with AI. Eight modules across five stages — Discover, Plan, Learn, Activate, and Sustain — combine proven instructional frameworks with hands-on labs using GPT-4, Claude, and Gemini. Includes six months of BoodleBox AI platform access.</p>
+      <div class="tcea-featured-tags">
+        <span class="tcea-tag">22 CPE Hours</span>
+        <span class="tcea-tag">8 Modules · 5 Stages</span>
+        <span class="tcea-tag gold-tag">6 Months BoodleBox Access</span>
+        <span class="tcea-tag">Digital Badge + Certificate</span>
+        <span class="tcea-tag">GPT-4 · Claude · Gemini Labs</span>
+      </div>
+      <a href="https://tcea.org/accelerators/ai-amplified-educator" class="btn-primary">Learn More →</a>
+    </div>
+  </section>
+
+  <section class="tcea-section" id="courses">
+    <div class="tcea-section-header">
+      <div class="tcea-section-icon">✅</div>
+      <div class="tcea-section-meta">
+        <h2>Online Self-Paced Courses</h2>
+        <p>$44 each ($34 for groups of 10+) · 12–16 CPE hours · Digital Badge and Certificate</p>
+      </div>
+      <div class="tcea-price-badge">$44 · $34 bulk</div>
+    </div>
+
+    <p class="tcea-cat-label">🤖 AI-Focused Courses</p>
+    <div class="tcea-course-grid">
+      <a href="https://tcea.org/courses/artificial-intelligence-educator/" class="tcea-course-card"><div class="tcea-course-title">Artificial Intelligence Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span><span class="tcea-chip tcea-chip-badge">Badge + Cert</span></div></a>
+      <a href="https://tcea.org/courses/ai-tools-for-educators" class="tcea-course-card"><div class="tcea-course-title">AI Tools for Educators</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span><span class="tcea-chip tcea-chip-badge">Badge + Cert</span></div></a>
+      <a href="https://tcea.org/courses/canva-specialist/" class="tcea-course-card"><div class="tcea-course-title">Canva Specialist <small style="font-weight:400;color:var(--text-muted)">(Includes Canva Magic Studio and AI Apps)</small></div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span><span class="tcea-chip tcea-chip-badge">Badge + Cert</span></div></a>
+      <a href="https://tcea.org/courses/chatgpt-for-educators/" class="tcea-course-card"><div class="tcea-course-title">ChatGPT for Educators</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span><span class="tcea-chip tcea-chip-badge">Badge + Cert</span></div></a>
+      <a href="https://tcea.org/courses/claude-ai-for-educators/" class="tcea-course-card"><div class="tcea-course-title">Claude AI for Educators</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span><span class="tcea-chip tcea-chip-badge">Badge + Cert</span></div></a>
+    </div>
+
+    <p class="tcea-cat-label">🔵 Google Courses</p>
+    <div class="tcea-course-grid">
+      <a href="https://tcea.org/courses/chromebook/" class="tcea-course-card"><div class="tcea-course-title">Chromebook Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/google-lv1" class="tcea-course-card"><div class="tcea-course-title">Google Certified Educator Level 1</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/google-lv2/" class="tcea-course-card"><div class="tcea-course-title">Google Certified Educator Level 2</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/gct" class="tcea-course-card"><div class="tcea-course-title">Google Certified Trainer</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/google-classroom/" class="tcea-course-card"><div class="tcea-course-title">Google Classroom</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/google-sheets/" class="tcea-course-card"><div class="tcea-course-title">Google Sheets</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/google-sites" class="tcea-course-card"><div class="tcea-course-title">Google Sites</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/google-slides/" class="tcea-course-card"><div class="tcea-course-title">Google Slides</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+    </div>
+
+    <p class="tcea-cat-label">🤖 Coding, STEAM and Robotics</p>
+    <div class="tcea-course-grid">
+      <a href="https://tcea.org/courses/coding-elementary/" class="tcea-course-card"><div class="tcea-course-title">Coding in the Elementary Grades</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/elementary-technology/" class="tcea-course-card"><div class="tcea-course-title">Elementary Technology</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/ev3/" class="tcea-course-card"><div class="tcea-course-title">EV3 Robotics</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/game-based-learning/" class="tcea-course-card"><div class="tcea-course-title">Game-Based Learning</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/jigsawing_the_microbit/" class="tcea-course-card"><div class="tcea-course-title">Jigsawing the micro:bit</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/python-educator/" class="tcea-course-card"><div class="tcea-course-title">Python Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/scratch/" class="tcea-course-card"><div class="tcea-course-title">Scratch Computational Thinking</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/spike-prime/" class="tcea-course-card"><div class="tcea-course-title">SPIKE Essential Robotics</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/spike-prime/" class="tcea-course-card"><div class="tcea-course-title">SPIKE Prime Robotics</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/steam-educator/" class="tcea-course-card"><div class="tcea-course-title">STEAM Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/virtual_world_builder/" class="tcea-course-card"><div class="tcea-course-title">Virtual World Builder: Game-Based Learning</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/wedo/" class="tcea-course-card"><div class="tcea-course-title">WeDo 2.0 Robotics</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+    </div>
+
+    <p class="tcea-cat-label">📚 Curriculum and Instruction</p>
+    <div class="tcea-course-grid">
+      <a href="https://tcea.org/courses/assessment-based/" class="tcea-course-card"><div class="tcea-course-title">Assessment-Based Feedback</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/blended-learning/" class="tcea-course-card"><div class="tcea-course-title">Blended Learning</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/brain-based-learning/" class="tcea-course-card"><div class="tcea-course-title">Brain-Based Learning</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/choice-boards/" class="tcea-course-card"><div class="tcea-course-title">Choice Boards for Educators</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/creative-response-to-literature/" class="tcea-course-card"><div class="tcea-course-title">Creative Response to Literature</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/cultivating-calm/" class="tcea-course-card"><div class="tcea-course-title">Cultivating Calm</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/dynamic-instruction-with-project-based-learning-pbl/" class="tcea-course-card"><div class="tcea-course-title">Dynamic Instruction with Project-Based Learning (PBL)</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/self-reported/" class="tcea-course-card"><div class="tcea-course-title">Effective Engagement with Self-Reported Grades</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://courses.tcea.org/#12hours" class="tcea-course-card"><div class="tcea-course-title">Effective Math <small style="font-weight:400;color:var(--text-muted)">(K–2, 3–5, 6–8, 9–12)</small></div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/evidence-based-teaching/" class="tcea-course-card"><div class="tcea-course-title">Evidence-Based Teaching</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/jigsaw-method/" class="tcea-course-card"><div class="tcea-course-title">Jigsaw Method</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/kernel-essays/" class="tcea-course-card"><div class="tcea-course-title">Kernel Essays for Writing and Reading</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/sel/" class="tcea-course-card"><div class="tcea-course-title">Social and Emotional Learning</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/special-needs/" class="tcea-course-card"><div class="tcea-course-title">Special Needs Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/strategies-part-1/" class="tcea-course-card"><div class="tcea-course-title">Strategies That Work, Part 1: Core Components</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/strategies-part-2/" class="tcea-course-card"><div class="tcea-course-title">Strategies That Work, Part 2: Surface Learning Strategies</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/teacher-library/" class="tcea-course-card"><div class="tcea-course-title">Teacher-Library Collaboration</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/the-three-dimensions-of-science-teks" class="tcea-course-card"><div class="tcea-course-title">Three Dimensions of Science TEKS <small style="color:var(--text-muted);font-weight:400">(w/ CAST)</small></div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/understanding-teaching-gifted-learners/" class="tcea-course-card"><div class="tcea-course-title">Understanding and Teaching Gifted Learners</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span><span class="tcea-chip tcea-chip-gt">GT Credit</span></div></a>
+      <a href="https://tcea.org/courses/remote-learning" class="tcea-course-card"><div class="tcea-course-title">Remote Learning Educator Certification</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span><span class="tcea-chip tcea-chip-gt">GT Credit</span></div></a>
+    </div>
+
+    <p class="tcea-cat-label">🛠️ Digital Tools</p>
+    <div class="tcea-course-grid">
+      <a href="https://tcea.org/courses/photoshop/" class="tcea-course-card"><div class="tcea-course-title">Adobe Photoshop</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/advanced-streaming/" class="tcea-course-card"><div class="tcea-course-title">Advanced Streaming through OBS Studio</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/bitmoji/" class="tcea-course-card"><div class="tcea-course-title">Bitmoji Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/book-creator/" class="tcea-course-card"><div class="tcea-course-title">Book Creator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/canva-educator/" class="tcea-course-card"><div class="tcea-course-title">Canva Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/data-guardian/" class="tcea-course-card"><div class="tcea-course-title">Data Guardian: Cybersecurity for Educators</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/network-security/" class="tcea-course-card"><div class="tcea-course-title">Network Security</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/rlt/" class="tcea-course-card"><div class="tcea-course-title">Remote Learning Tools</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/screencasting/" class="tcea-course-card"><div class="tcea-course-title">Screencasting for Educators</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/wakelet-educator/" class="tcea-course-card"><div class="tcea-course-title">Wakelet Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+    </div>
+
+    <p class="tcea-cat-label">📋 Learning Management Systems (LMS)</p>
+    <div class="tcea-course-grid">
+      <a href="https://tcea.org/courses/canvas" class="tcea-course-card"><div class="tcea-course-title">Canvas Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/google-classroom/" class="tcea-course-card"><div class="tcea-course-title">Google Classroom</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/microsoft365" class="tcea-course-card"><div class="tcea-course-title">Microsoft 365</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/schoology" class="tcea-course-card"><div class="tcea-course-title">Schoology Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/seesaw-content-creator" class="tcea-course-card"><div class="tcea-course-title">Seesaw Content Creator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/seesaw/" class="tcea-course-card"><div class="tcea-course-title">Seesaw Educator</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+    </div>
+
+    <p class="tcea-cat-label">🖥️ Technology Applications: TEKS (TA:TEKS)</p>
+    <div class="tcea-course-grid">
+      <a href="https://tcea.org/courses/technology-applications-teks-for-grades-k-2/" class="tcea-course-card"><div class="tcea-course-title">Technology Applications: TEKS for Grades K–2</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/technology-applications-teks-for-grades-3-5/" class="tcea-course-card"><div class="tcea-course-title">Technology Applications: TEKS for Grades 3–5</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+      <a href="https://tcea.org/courses/technology-applications-teks-for-grades-6-8/" class="tcea-course-card"><div class="tcea-course-title">Technology Applications: TEKS for Grades 6–8</div><div class="tcea-course-meta"><span class="tcea-chip tcea-chip-cpe">12 CPE</span></div></a>
+    </div>
+  </section>
+
+  <section class="tcea-section" id="boosters">
+    <div class="tcea-section-header">
+      <div class="tcea-section-icon">💡</div>
+      <div class="tcea-section-meta">
+        <h2>Knowledge Boosters</h2>
+        <p>Short, self-paced learning experiences that fit your schedule · Digital Certificate included</p>
+      </div>
+      <div class="tcea-price-badge gold">$29 each</div>
+    </div>
+    <p class="tcea-cat-label">General Knowledge Boosters</p>
+    <div class="tcea-booster-grid">
+      <a href="https://tcea.org/knowledge-boosters/" class="tcea-booster-card"><div class="tcea-booster-icon">🔍</div><div class="tcea-booster-title">Transform Teaching with Perplexity AI</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/ai-personal-tutor/" class="tcea-booster-card"><div class="tcea-booster-icon">🧠</div><div class="tcea-booster-title">AI's Place in Education as a Personal Tutor</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/" class="tcea-booster-card"><div class="tcea-booster-icon">🤖</div><div class="tcea-booster-title">Think with Claude</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/https-membership-tcea-org-commerce-knowledgeboosterstoreproductidcommerce-merchandisemain-tcea-knowledge-booster-running-ai-locally-and-safely-for-schools/" class="tcea-booster-card"><div class="tcea-booster-icon">🖥️</div><div class="tcea-booster-title">Running AI Locally and Safely for Schools</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/gifted-talented-ai-implementation-ebook-practical-strategies-for-educators/" class="tcea-booster-card"><div class="tcea-booster-icon">🌟</div><div class="tcea-booster-title">Gifted &amp; Talented AI Implementation Ebook: Practical Strategies for Educators</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+    </div>
+    <p class="tcea-cat-label" style="margin-top:28px">AI in Five Knowledge Boosters</p>
+    <div class="tcea-booster-grid">
+      <a href="https://tcea.org/knowledge-boosters/ai-in-five-boodlebox-unlimited/" class="tcea-booster-card"><div class="tcea-booster-icon">5️⃣</div><div class="tcea-booster-title">AI in Five: BoodleBox Unlimited</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/ai-in-five-chatgpt/" class="tcea-booster-card"><div class="tcea-booster-icon">5️⃣</div><div class="tcea-booster-title">AI in Five: ChatGPT</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/ai-in-five-gemini-and-notebooklm/" class="tcea-booster-card"><div class="tcea-booster-icon">5️⃣</div><div class="tcea-booster-title">AI in Five: Gemini and NotebookLM</div><div class="tcea-booster-price">$29 · Digital Certificate</div></a>
+    </div>
+  </section>
+
+  <section class="tcea-section" id="mls">
+    <div class="tcea-section-header">
+      <div class="tcea-section-icon">🎓</div>
+      <div class="tcea-section-meta">
+        <h2>Mastery Learning Series</h2>
+        <p>High-impact instructional strategies with proven EdTech solutions · Digital Badge and Certificate</p>
+      </div>
+      <div class="tcea-price-badge">$39 each · 10 CPE hrs</div>
+    </div>
+    <div class="tcea-mls-card">
+      <h3>New Titles Coming Soon</h3>
+      <p>The Mastery Learning Series features short, self-paced professional learning experiences focused on high-impact instructional strategies. Each title awards 10 CPE hours and a digital badge and certificate. New titles are released throughout the year.</p>
+      <a href="https://tcea.org/knowledge-boosters/" class="btn-primary" style="background:var(--navy);color:var(--white);">View Available Titles →</a>
+    </div>
+  </section>
+
+  <section class="tcea-section" id="certs">
+    <div class="tcea-section-header">
+      <div class="tcea-section-icon">🏅</div>
+      <div class="tcea-section-meta">
+        <h2>Certifications</h2>
+        <p>Expert instruction, applied projects, and a capstone portfolio demonstrating mastery</p>
+      </div>
+      <div class="tcea-price-badge">$349 – $449</div>
+    </div>
+    <div class="tcea-cert-grid">
+      <a href="https://tcea.org/courses/instructional-coach-certification/" class="tcea-cert-card">
+        <h4>Instructional Coach Certification</h4>
+        <p>Develop practical leadership and instructional coaching skills aligned to real-world educational needs. Culminates in a portfolio project demonstrating mastery.</p>
+        <div class="tcea-cert-footer"><span class="tcea-chip tcea-chip-cpe">33 CPE hrs</span><span class="tcea-chip tcea-chip-badge">Badge + Cert</span><span class="tcea-chip tcea-chip-price">$349</span></div>
+      </a>
+      <a href="https://tcea.org/courses/cts/" class="tcea-cert-card">
+        <h4>Campus Technology Specialist (CTS)</h4>
+        <p>Comprehensive preparation for campus technology leadership. Build expertise in planning, implementation, and professional learning facilitation.</p>
+        <div class="tcea-cert-footer"><span class="tcea-chip tcea-chip-cpe">33 CPE hrs</span><span class="tcea-chip tcea-chip-badge">Badge + Cert</span><span class="tcea-chip tcea-chip-price">$349</span></div>
+      </a>
+      <a href="https://tcea.org/courses/it/" class="tcea-cert-card cert-gold">
+        <h4>IT/Tech Director Certification</h4>
+        <p>Advanced certification for technology directors covering leadership, infrastructure planning, security, and district-wide technology strategy.</p>
+        <div class="tcea-cert-footer"><span class="tcea-chip tcea-chip-cpe">49 CPE hrs</span><span class="tcea-chip tcea-chip-badge">Badge + Print Cert</span><span class="tcea-chip tcea-chip-price">$449</span></div>
+      </a>
+      <a href="https://tcea.org/courses/it/" class="tcea-cert-card cert-gold">
+        <h4>Technology Coordinator Certification</h4>
+        <p>Build expertise in coordinating educational technology programs, supporting staff, and aligning technology use to district learning goals.</p>
+        <div class="tcea-cert-footer"><span class="tcea-chip tcea-chip-cpe">49 CPE hrs</span><span class="tcea-chip tcea-chip-badge">Badge + Print Cert</span><span class="tcea-chip tcea-chip-price">$449</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="tcea-section" id="parents">
+    <div class="tcea-section-header">
+      <div class="tcea-section-icon">👨‍👩‍👧</div>
+      <div class="tcea-section-meta">
+        <h2>Parent Knowledge Boosters</h2>
+        <p>Designed for parent engagement initiatives — six titles covering AI, Google tools, online safety, and more</p>
+      </div>
+      <div class="tcea-price-badge teal">$19.99 each</div>
+    </div>
+    <div class="tcea-booster-grid">
+      <a href="https://tcea.org/knowledge-boosters/pkb-college-and-career-readiness/" class="tcea-booster-card"><div class="tcea-booster-icon">🎓</div><div class="tcea-booster-title">PKB: College and Career Readiness</div><div class="tcea-booster-price">$19.99 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/pkb-google-tools/" class="tcea-booster-card"><div class="tcea-booster-icon">🔵</div><div class="tcea-booster-title">PKB: Google Tools</div><div class="tcea-booster-price">$19.99 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/pkb-notebooklm-for-home-learning-success/" class="tcea-booster-card"><div class="tcea-booster-icon">📓</div><div class="tcea-booster-title">PKB: NotebookLM for Home Learning Success</div><div class="tcea-booster-price">$19.99 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/pkb-online-safety-made-simple/" class="tcea-booster-card"><div class="tcea-booster-icon">🔒</div><div class="tcea-booster-title">PKB: Online Safety Made Simple</div><div class="tcea-booster-price">$19.99 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/pkb-simple-ways-to-build-your-childs-vocabulary-at-home/" class="tcea-booster-card"><div class="tcea-booster-icon">📖</div><div class="tcea-booster-title">PKB: Simple Ways to Build Your Child's Vocabulary at Home</div><div class="tcea-booster-price">$19.99 · Digital Certificate</div></a>
+      <a href="https://tcea.org/knowledge-boosters/pkb-what-parents-need-to-know-about-ai-in-school/" class="tcea-booster-card"><div class="tcea-booster-icon">🤖</div><div class="tcea-booster-title">PKB: What Parents Need to Know About AI in School</div><div class="tcea-booster-price">$19.99 · Digital Certificate</div></a>
+    </div>
+  </section>
+
+  <section class="tcea-section" id="individual">
+    <div class="tcea-section-header">
+      <div class="tcea-section-icon">👤</div>
+      <div class="tcea-section-meta">
+        <h2>Individual All-Access Pass</h2>
+        <p>Best for educators not part of a district subscription</p>
+      </div>
+      <div class="tcea-price-badge">$249</div>
+    </div>
+    <div class="tcea-featured-card" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy));">
+      <h3 style="color:var(--gold-light)">Individual All-Access Pass</h3>
+      <p>Unlimited access to the full TCEA catalog for 12 months. Covers professional learning on brain-based research, sound pedagogy, classroom management, student engagement, and appropriate technology tools.</p>
+      <div class="tcea-featured-tags">
+        <span class="tcea-tag">12 Months Access</span>
+        <span class="tcea-tag">Full Catalog</span>
+        <span class="tcea-tag gold-tag">Lifetime TCEA Membership Included</span>
+      </div>
+      <a href="https://tcea.org/pd" class="btn-primary">Learn More →</a>
+    </div>
+  </section>
+
+  <div class="tcea-contact">
+    <div>
+      <h3>Ready to Get Started?</h3>
+      <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e49681838d97909685908d8b8aa490878185ca8b9683">[email&#160;protected]</a> &nbsp;·&nbsp; 📞 512-475-8500 &nbsp;·&nbsp; 🌐 tcea.org/pd</p>
+    </div>
+    <div class="tcea-contact-links">
+      <a href="https://tinyurl.com/tceahelp">Get a Quote</a>
+      <a href="https://courses.tcea.org/get-help/" class="outline-link">Get Help</a>
+    </div>
+  </div>
+
+</main>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const sections = document.querySelectorAll(".tcea-section");
+  const tabs = document.querySelectorAll(".tcea-nav-tab");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tabs.forEach(tab => {
+        

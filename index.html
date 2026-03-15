@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCEA — Texas Computer Education Association</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A3476;
+  --navy-dark: #071f4a;
+  --navy-mid: #12428f;
+  --gold: #FCB040;
+  --gold-light: #fdd17a;
+  --gold-pale: #FEF0D0;
+  --pale-navy: #D0D8F0;
+  --white: #ffffff;
+  --off-white: #f7f8fc;
+  --text: #1a1a2e;
+  --text-muted: #5a6680;
+  --border: #e2e7f5;
+  --teal: #0e6b8a;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--off-white);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-1 { animation: fadeUp 0.55s ease forwards; opacity: 0; animation-delay: 0.05s; }
+.fade-2 { animation: fadeUp 0.55s ease forwards; opacity: 0; animation-delay: 0.15s; }
+.fade-3 { animation: fadeUp 0.55s ease forwards; opacity: 0; animation-delay: 0.25s; }
+.fade-4 { animation: fadeUp 0.55s ease forwards; opacity: 0; animation-delay: 0.35s; }
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: var(--navy-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+.top-bar a {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.top-bar a:hover { color: var(--gold); }
+
+/* ── SITE NAV ── */
+.site-nav {
+  background: var(--white);
+  border-bottom: 1.5px solid var(--border);
+  box-shadow: 0 2px 12px rgba(10,52,118,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 16px;
+}
+.site-nav-logo img { height: 40px; display: block; }
+.site-nav-links {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-nav-links::-webkit-scrollbar { display: none; }
+.nav-link {
+  padding: 8px 14px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link:hover { color: var(--navy); background: var(--off-white); }
+.nav-join {
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  font-size: 0.84rem;
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+  margin-left: 8px;
+}
+.nav-join:hover { background: var(--gold-light); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy-dark);
+  background-image:
+    radial-gradient(ellipse 70% 70% at 90% 30%, rgba(252,176,64,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(18,66,143,0.5) 0%, transparent 60%);
+  padding: 80px 24px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-inner { max-width: 760px; margin: 0 auto; position: relative; }
+.hero-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+.hero img { height: 64px; margin-bottom: 28px; display: block; margin-left: auto; margin-right: auto; }
+.hero h1 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.72);
+  max-width: 580px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+}
+.hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline {
+  border: 1.5px solid rgba(255,255,255,0.35);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.btn-outline:hover { border-color: var(--gold); background: rgba(252,176,64,0.08); }
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  background: var(--white);
+  border-bottom: 1.5px solid var(--border);
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+}
+.stat {
+  text-align: center;
+  padding: 8px 16px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: "DM Serif Display", serif;
+  font-size: 2rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ── PAGE NAV ── */
+.page-nav {
+  background: var(--white);
+  border-bottom: 1.5px solid var(--border);
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+  box-shadow: 0 2px 8px rgba(10,52,118,0.04);
+}
+.page-nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.page-nav-inner::-webkit-scrollbar { display: none; }
+.page-tab {
+  padding: 14px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.page-tab:hover, .page-tab.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+/* ── MAIN ── */
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.section-header-left h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.7rem;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.section-header-left p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.price-badge {
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.price-badge.gold { background: var(--gold); color: var(--navy-dark); }
+.price-badge.teal { background: var(--teal); }
+
+/* ── SECTION ── */
+.section { margin-bottom: 64px; scroll-margin-top: 140px; }
+
+/* ── MISSION CARD ── */
+.mission-card {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.mission-card h3 {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.mission-card p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.mission-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pillar {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pillar-icon { font-size: 1.3rem; flex-shrink: 0; }
+.pillar-text strong { display: block; font-size: 0.88rem; color: var(--white); font-weight: 700; }
+.pillar-text span { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+/* ── EVENT CARDS ── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+.event-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  text-decoration: none;
+  color: inherit;
+}
+.event-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(10,52,118,0.1);
+  transform: translateY(-2px);
+}
+.event-date-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--pale-navy);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  width: fit-content;
+}
+.event-card h3 {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.15rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.event-card .event-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.event-card .event-meta span { display: flex; align-items: center; gap: 5px; }
+.event-card .event-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chip-price {
+  background: #f3e8ff;
+  color: #6b21a8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.chip-free {
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.register-link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s;
+}
+.register-link:hover { color: var(--gold); }
+
+/* ── FEATURED EVENT ── */
+.featured-event {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+  border-radius: 16px;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.featured-event::after {
+  content: '★';
+  position: absolute;
+  right: -20px;
+  top: -30px;
+  font-size: 180px;
+  color: rgba(252,176,64,0.04);
+  pointer-events: none;
+}
+.featured-event-info h3 {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.featured-event-info p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 10px;
+}
+.featured-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag-white {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* ── BLOG CARDS ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+.blog-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  text-decoration: none;
+  color: inherit;
+}
+.blog-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(10,52,118,0.1);
+  transform: translateY(-2px);
+}
+.blog-card-body { padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.blog-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.blog-card h3 {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.05rem;
+  color: var(--navy);
+  line-height: 1.35;
+}
+.blog-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+.blog-card-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.service-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  text-decoration: none;
+  color: inherit;
+}
+.service-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(10,52,118,0.1);
+  transform: translateY(-2px);
+}
+.service-icon { font-size: 1.8rem; }
+.service-card h3 {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+.service-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.service-link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── INFO BANNER ── */
+.info-banner {
+  background: linear-gradient(135deg, #f0f4ff 0%, var(--gold-pale) 100%);
+  border: 1.5px solid var(--pale-navy);
+  border-radius: 14px;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.info-banner-icon { font-size: 2rem; flex-shrink: 0; }
+.info-banner-text { flex: 1; }
+.info-banner-text strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.info-banner-text span { font-size: 0.83rem; color: var(--text-muted); }
+.info-banner-cta {
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.info-banner-cta:hover { background: var(--navy-mid); }
+
+/* ── CONTACT STRIP ── */
+.contact-strip {
+  background: var(--navy-dark);
+  padding: 48px 24px;
+}
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.contact-info h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.contact-info p { font-size: 0.87rem; color: rgba(255,255,255,0.6); }
+.contact-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 11px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-gold:hover { background: var(--gold-light); }
+.btn-ghost {
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 11px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.btn-ghost:hover { border-color: var(--gold); background: rgba(252,176,64,0.08); }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy-dark);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 40px 24px 28px;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 36px;
+}
+.footer-brand img { height: 40px; margin-bottom: 14px; }
+.footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 240px; }
+.footer-col h4 {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.footer-col a {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  margin-bottom: 7px;
+  transition: color 0.15s;
+}
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+.footer-social { display: flex; gap: 12px; }
+.social-link {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.social-link:hover { background: rgba(252,176,64,0.2); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .hero { padding: 48px 20px 52px; }
+  .hero h1 { font-size: 1.8rem; }
+  .main { padding: 32px 16px 60px; }
+  .mission-card { grid-template-columns: 1fr; padding: 24px 20px; gap: 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .site-nav-links { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="https://blog.tcea.org/">Blog</a>
+  <a href="https://tcea.org/membership/">Join TCEA</a>
+  <a href="https://tcea.mobilize.io/">Member Community</a>
+  <a href="https://tcea.org/podcast/stuffilearned/">Podcast</a>
+  <a href="https://tcea.org/contact/">Contact</a>
+</div>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="https://tcea.org/">
+      <img src="data:image/jpeg;base64,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pCU/kTXltbOneK9e0kKtlqtzGi/djL7kH/AWyP0rmnRxMf4VTTzX6m8atCXxw+7/ACOq/wCFOeIP+fzTf+/r/wDxFXbb4MXrAfadXt4j3EcTP+pxWXa/FvxLboFlFncEfxSwkH/x0gfpV0fGXVwuDp1iT6jeAfwzXPOWY7JL1X/BNYrBbts6zS/hNoFkyvdtcXzgcrI21CfXC4P5k121pZ21hbrb2lvFBCvSOJAqjPXgcV4vL8YdecMI7TT4weh2OSPzbH6Vz+o+O/EupqVm1adEP8MGIhj0O3GfxzXJPB4/EaVZWX9dEdEcThaPwR1Pb9e8Y6L4dRvtl2rzjpbwkNIT7jPH44FeKeK/G2o+KptsuILJGJjtkJx9WP8AEcfh6AZOeZyT1NJ2ruwmWUsO+Z6yOTEY2pV0WiEooor0jiCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD7f8AAn/JPPDX/YKtf/RS10Fc/wCBP+SeeGv+wVa/+ilroKAPgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+3/An/JPPDX/AGCrX/0UtdBXP+BP+SeeGv8AsFWv/opa6CgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="TCEA">
+    </a>
+    <div class="site-nav-links">
+      <a class="nav-link" href="pd.html">Professional Learning</a>
+      <a class="nav-link" href="courses.html">Courses</a>
+      <a class="nav-link" href="https://tcea.org/events/">Events</a>
+      <a class="nav-link" href="https://tcea.org/info/">Collaborate</a>
+      <a class="nav-link" href="https://tcea.org/about/">About</a>
+    </div>
+    <a class="nav-join" href="https://tcea.org/membership/">Join TCEA</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="fade-1">
+      <div class="hero-badge">Texas Computer Education Association</div>
+    </div>
+    <h1 class="fade-2">Helping educators <em>break down barriers</em><br>and transform learning.</h1>
+    <p class="fade-3">TCEA is a member-based organization devoted to advancing technology in teaching and learning — through advocacy, professional learning, and community.</p>
+    <div class="hero-btns fade-4">
+      <a href="https://tcea.org/pd/" class="btn-primary">Explore Professional Learning →</a>
+      <a href="https://tcea.org/membership/" class="btn-outline">Join TCEA</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">100K+</div>
+      <div class="stat-label">Educator Members</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">45+</div>
+      <div class="stat-label">Years of Service</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Online Courses</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Upcoming Conferences</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE NAV -->
+<div class="page-nav">
+  <div class="page-nav-inner">
+    <a class="page-tab active" href="#about">About TCEA</a>
+    <a class="page-tab" href="#events">Upcoming Events</a>
+    <a class="page-tab" href="#blog">TechNotes Blog</a>
+    <a class="page-tab" href="#services">Professional Learning</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>🎓 About TCEA</h2>
+        <p>Our mission, our pillars, our people</p>
+      </div>
+      <span class="price-badge gold">Est. 1980</span>
+    </div>
+
+    <div class="mission-card">
+      <div>
+        <h3>Technology in service of every learner.</h3>
+        <p>TCEA (Texas Computer Education Association) is a member-based organization devoted to advancing technology in teaching and learning. We want to dismantle and eliminate barriers in education and make learning possible for every student — through advocacy, professional learning, and community.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="https://tcea.org/membership/" class="btn-primary">Join TCEA</a>
+          <a href="https://tcea.org/about/" style="border:1.5px solid rgba(255,255,255,0.25);color:var(--white);font-weight:600;font-size:0.92rem;padding:12px 22px;border-radius:8px;text-decoration:none;">Learn More</a>
+        </div>
+      </div>
+      <div class="mission-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🏛️</div>
+          <div class="pillar-text">
+            <strong>Advocacy</strong>
+            <span>Standing up for educators and students in policy spaces</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📚</div>
+          <div class="pillar-text">
+            <strong>Professional Learning</strong>
+            <span>High-quality courses, conferences, and certifications</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🤝</div>
+          <div class="pillar-text">
+            <strong>Community</strong>
+            <span>A connected network of 100,000+ educators worldwide</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section" id="events">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>📅 Upcoming Events</h2>
+        <p>In-person and online learning opportunities for educators</p>
+      </div>
+      <a href="https://tcea.org/events/" class="price-badge">View All Events</a>
+    </div>
+
+    <!-- Featured Event -->
+    <div class="featured-event">
+      <div class="featured-event-info">
+        <h3>TCEA 2027 Convention &amp; Exposition</h3>
+        <p>Our flagship annual event — the largest ed-tech gathering in Texas. Sessions, workshops, exhibit hall, and connections that last a career.</p>
+        <div class="featured-tags">
+          <span class="tag-white">📍 San Antonio, TX</span>
+          <span class="tag-white">📆 Jan 31 – Feb 3, 2027</span>
+          <span class="tag-white">🎟️ Members Save</span>
+        </div>
+      </div>
+      <a href="https://convention.tcea.org/register" class="btn-primary" style="flex-shrink:0;">Register Now →</a>
+    </div>
+
+    <div class="events-grid">
+      <!-- AI Conference -->
+      <a class="event-card" href="https://membership.tcea.org/integratedEvents/home/2026-AI-FOR-EDUCATORS-CONFERENCE">
+        <span class="event-date-tag">🤖 June 9–11, 2026</span>
+        <h3>AI for Educators Conference 2026</h3>
+        <div class="event-meta">
+          <span>🌐 Online</span>
+          <span>🕗 8:30 a.m. – 1:00 p.m. CST daily</span>
+          <span>📼 Recorded access through July 31</span>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.55;">Discover how AI can transform your teaching — from administrative burden to educational breakthrough. Practical strategies, cutting-edge tools.</p>
+        <div class="event-footer">
+          <span class="chip-price">59 Members · 88 Non-members</span>
+          <span class="register-link">Register →</span>
+        </div>
+      </a>
+
+      <!-- ETC -->
+      <a class="event-card" href="https://membership.tcea.org/integratedEvents/home/2026-ELEMENTARY-TECHNOLOGY-CONFERENCE">
+        <span class="event-date-tag">🏫 June 14–16, 2026</span>
+        <h3>Elementary Technology Conference</h3>
+        <div class="event-meta">
+          <span>📍 Galveston, TX</span>
+          <span>🍽️ Meals + T-shirt included</span>
+          <span>🔬 Learning Labs available June 14</span>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.55;">All conference activities, hands-on workshops, exhibit hall, continental breakfast, lunch, and afternoon snacks. TCEA membership included for non-members.</p>
+        <div class="event-footer">
+          <span class="chip-price">Members · Non-member pricing available</span>
+          <span class="register-link">Register →</span>
+        </div>
+      </a>
+
+      <!-- Librarian -->
+      <a class="event-card" href="https://membership.tcea.org/integratedEvents/home/2026-LIBRARIAN-CONFERENCE">
+        <span class="event-date-tag">📚 June 23–25, 2026</span>
+        <h3>Librarian Conference 2026</h3>
+        <div class="event-meta">
+          <span>🌐 Online</span>
+          <span>🕗 8:30 a.m. – 1:00 p.m. CST daily</span>
+          <span>📼 Recorded access through July 31</span>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.55;">Designed for librarians, by librarians. Explore practical strategies, innovative tools, and forward-thinking practices you can implement immediately.</p>
+        <div class="event-footer">
+          <span class="chip-price">49 Members · 78 Non-members</span>
+          <span class="register-link">Register →</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Newsletter banner -->
+    <div class="info-banner" style="margin-top:16px;">
+      <div class="info-banner-icon">📬</div>
+      <div class="info-banner-text">
+        <strong>Stay up to date with all things TCEA</strong>
+        <span>Join 100,000+ educators — get daily articles, event updates, and more delivered to your inbox.</span>
+      </div>
+      <a href="http://eepurl.com/dCXaRP" class="info-banner-cta">Subscribe Free</a>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="section" id="blog">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>✍️ Latest from TechNotes</h2>
+        <p>Daily articles for educators who use technology</p>
+      </div>
+      <a href="https://blog.tcea.org/" class="price-badge teal">Visit Blog</a>
+    </div>
+
+    <div class="blog-grid">
+      <a class="blog-card" href="https://blog.tcea.org/artificial-intelligence-in-special-education-how-to-write-ferpa-safe-ieps-with-ai/">
+        <div class="blog-card-body">
+          <span class="blog-label">AI in Education</span>
+          <h3>Artificial Intelligence in Special Education: How to Write FERPA-Safe IEPs with AI</h3>
+          <p>Overwhelmed with IEP paperwork? Here's how to use AI to draft goals faster without risking a FERPA violation. Practical prompts, privacy guidance, and more.</p>
+        </div>
+        <div class="blog-card-footer">Read Article →</div>
+      </a>
+
+      <a class="blog-card" href="https://blog.tcea.org/bellringer-strategies-to-capture-student-attention/">
+        <div class="blog-card-body">
+          <span class="blog-label">Classroom Strategies</span>
+          <h3>Bellringer Strategies to Capture Student Attention</h3>
+          <p>You know the scene. The bell rings. Half your students are still mentally scrolling. Here are proven bellringer strategies that pull students into learning immediately.</p>
+        </div>
+        <div class="blog-card-footer">Read Article →</div>
+      </a>
+
+      <a class="blog-card" href="https://blog.tcea.org/ai-maker-magic-part-2-a-fun-personality-quiz-webpage/">
+        <div class="blog-card-body">
+          <span class="blog-label">AI Tools</span>
+          <h3>AI Maker Magic, Part 2: A Fun Personality Quiz Webpage</h3>
+          <p>How do you make a custom GPT accessible to anyone, even without a ChatGPT account? You turn it into a website. Here's how in part two of this series.</p>
+        </div>
+        <div class="blog-card-footer">Read Article →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL LEARNING -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>🚀 Professional Learning</h2>
+        <p>Build your skills and support your campus — all year long</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <a class="service-card" href="https://tcea.org/courses/">
+        <div class="service-icon">💻</div>
+        <h3>Online Courses</h3>
+        <p>Self-paced courses with CPE hours, badges, and certifications. From AI literacy to classroom technology.</p>
+        <span class="service-link">Browse Courses →</span>
+      </a>
+      <a class="service-card" href="https://tcea.org/courses/#accelerators">
+        <div class="service-icon">⚡</div>
+        <h3>Accelerators</h3>
+        <p>Intensive cohort-based learning experiences with live instruction and peer collaboration.</p>
+        <span class="service-link">View Accelerators →</span>
+      </a>
+      <a class="service-card" href="https://tcea.org/pd/services/">
+        <div class="service-icon">🏫</div>
+        <h3>Consulting Services</h3>
+        <p>Bring TCEA expertise to your campus. Technology audits, consulting, and custom professional development.</p>
+        <span class="service-link">Explore Services →</span>
+      </a>
+      <a class="service-card" href="https://tcea.org/pd/webinars/">
+        <div class="service-icon">📡</div>
+        <h3>Free Webinars</h3>
+        <p>Live and recorded webinars on the latest tools, strategies, and research — included with membership.</p>
+        <span class="service-link">See Webinars →</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <h2>Connect with TCEA</h2>
+      <p>📧 registration@tcea.org &nbsp;·&nbsp; 📞 512-475-8500 &nbsp;·&nbsp; 🌐 tcea.org</p>
+    </div>
+    <div class="contact-btns">
+      <a href="mailto:registration@tcea.org" class="btn-gold">Email Us</a>
+      <a href="https://tcea.org/pd/" class="btn-ghost">Browse Professional Learning</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="data:image/jpeg;base64,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pCU/kTXltbOneK9e0kKtlqtzGi/djL7kH/AWyP0rmnRxMf4VTTzX6m8atCXxw+7/ACOq/wCFOeIP+fzTf+/r/wDxFXbb4MXrAfadXt4j3EcTP+pxWXa/FvxLboFlFncEfxSwkH/x0gfpV0fGXVwuDp1iT6jeAfwzXPOWY7JL1X/BNYrBbts6zS/hNoFkyvdtcXzgcrI21CfXC4P5k121pZ21hbrb2lvFBCvSOJAqjPXgcV4vL8YdecMI7TT4weh2OSPzbH6Vz+o+O/EupqVm1adEP8MGIhj0O3GfxzXJPB4/EaVZWX9dEdEcThaPwR1Pb9e8Y6L4dRvtl2rzjpbwkNIT7jPH44FeKeK/G2o+KptsuILJGJjtkJx9WP8AEcfh6AZOeZyT1NJ2ruwmWUsO+Z6yOTEY2pV0WiEooor0jiCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD7f8AAn/JPPDX/YKtf/RS10Fc/wCBP+SeeGv+wVa/+ilroKAPgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+3/An/JPPDX/AGCrX/0UtdBXP+BP+SeeGv8AsFWv/opa6CgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="TCEA">
+        <p>Texas Computer Education Association — advancing technology in teaching and learning since 1980.</p>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="https://tcea.org/about/">Who We Are</a>
+        <a href="https://tcea.org/about/board/">Board of Directors</a>
+        <a href="https://tcea.org/about/staff/">Staff</a>
+        <a href="https://tcea.org/about/advocacy/">Advocacy</a>
+        <a href="https://tcea.org/news/">News</a>
+      </div>
+      <div class="footer-col">
+        <h4>Membership</h4>
+        <a href="https://tcea.org/membership/">Join TCEA</a>
+        <a href="https://tcea.mobilize.io/">Member Community</a>
+        <a href="https://membership.tcea.org/welcome">Member Portal</a>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="https://tcea.org/pd/">Professional Learning</a>
+        <a href="https://tcea.org/events/">Events</a>
+        <a href="https://tcea.org/courses/">Courses</a>
+        <a href="https://tcea.org/pd/webinars/">Webinars</a>
+        <a href="https://blog.tcea.org/">TechNotes Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 TCEA. All rights reserved. &nbsp;·&nbsp; <a href="https://tcea.org/privacy-policy/" style="color:rgba(255,255,255,0.35);text-decoration:none;">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://tcea.org/contact/" style="color:rgba(255,255,255,0.35);text-decoration:none;">Contact Us</a></p>
+      <div class="footer-social">
+        <a class="social-link" href="https://www.facebook.com/tcea.org" title="Facebook">f</a>
+        <a class="social-link" href="https://www.instagram.com/tcea_org/" title="Instagram">in</a>
+        <a class="social-link" href="https://www.twitter.com/tcea" title="X">𝕏</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll for page nav
+document.querySelectorAll('.page-tab').forEach(tab => {
+  tab.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(tab.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Active tab highlight on scroll
+const sections = ['about','events','blog','services'].map(id => document.getElementById(id));
+const tabs = document.querySelectorAll('.page-tab');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    if (sec && window.scrollY >= sec.offsetTop - 160) current = sec.id;
+  });
+  tabs.forEach(t => {
+    t.classList.toggle('active', t.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
